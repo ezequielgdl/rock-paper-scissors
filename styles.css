@@ -1,6 +1,7 @@
 body {
     margin: 0;
-    font-family: Helvetica, sans-serif;
+    font-family: 'Permanent Marker', Helvetica, sans-serif;
+    color: rgb(67, 67, 67);
 }
 
 .title-container {
@@ -59,5 +60,5 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px 0;
-    font-size: 36px;
+    font-size: 32px;
 }
