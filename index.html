@@ -13,10 +13,19 @@
         <img class="title" src="/images/title.jpg">
     </div>
     <div class="ctrl-container">
-        <img class="ctrl" src="/images/rock-icon.png">
-        <img class="ctrl" src="/images/paper-icon.png">
-        <img class="ctrl" src="/images/scissors-icon.png">
+        <input type="image" src="images/rock-icon.png" alt="rock" class="ctrl" data-selection="rock"/>
+        <input type="image" src="images/paper-icon.png" alt="paper" class="ctrl" data-selection="paper"/>
+        <input type="image" src="images/scissors-icon.png" alt="scissors" class="ctrl" data-selection="scissors"/>
     </div>
-    <div class="result-container"></div>
+    <div class="choices-msg">Welcome, you silly human. Are you ready? Choose your destiny...</div>
+    <div class="message"></div>
+    <div class="result-container">
+        <div>YOU:
+            <span class="player-score"></span>
+        </div>
+        <div>ME:
+            <span class="computer-score">0</span>
+        </div>
+    </div>
 </body>
 </html>

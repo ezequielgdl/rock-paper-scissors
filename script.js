@@ -1,51 +1,60 @@
-function computerChoice() {
-    let choices = ['rock', 'paper', 'scissors']
-    return choices[Math.floor(Math.random() * choices.length)]
+const choiceBtns = document.querySelectorAll('[data-selection]');
+const message = document.querySelector('.message');
+const choiceMessage = document.querySelector('.choices-msg');
+let scorePlayer = document.querySelector('.player-score');
+let scoreComputer = document.querySelector('.computer-score');
+let player;
+let computer;
+let tempPlayerScore = 0;
+let tempComputerScore = 0;
+
+
+// Click on an image to choose player's choice and plays the game
+choiceBtns.forEach(input => input.addEventListener("click", (e) => {
+    player = input.alt;
+    computerPlay = computerChoice();
+    choiceMessage.textContent = `You chose ${player}. I chose ${computerPlay}.`
+    message.textContent = playRound();
+    scorePlayer.textContent = tempPlayerScore; 
+    scoreComputer.textContent = tempComputerScore;
+    if (tempPlayerScore == 5) {
+        message.textContent = "You win the game!"
+        disableButtons();
+    }
+    if (tempComputerScore == 5) {
+        message.textContent = "You lose the game!";
+        disableButtons();
+    }
+}));
+
+// Disable buttons when someone wins
+function disableButtons() {
+    choiceBtns.forEach(input => {
+        input.disabled = true;
+    })
 }
 
-const playerSelection = "rock";
-const computerSelection = computerChoice();
+// Gets the random computer choice
+function computerChoice() {
+    let choices = ["rock", "paper", "scissors"]
+    return computer = choices[Math.floor(Math.random() * choices.length)]
+}
 
-function playRound (playerSelection, computerSelection) {
-    let result = "";
-
-    if (playerSelection == "rock") {
-        if (computerSelection === "paper") {
-            result = "You lose! Paper beats Rock";
-        }
-        else if (computerSelection === "scissors") {
-            result = "You win! Rock beats Scissors"
-        }
-        else {
-            result = "It's a tie..."
-        }
+// Game functionality
+function playRound() {
+    if (player === computer){
+        return "It's a tie...";
     }
-    if (playerSelection === "paper") {
-        if (computerSelection === "scissors") {
-            result = "You lose! Scissors beat Paper";
+    else if (
+        (player == "rock" && computer == "scissors") ||
+        (player == "scissors" && computer == "paper") ||
+        (player == "paper" && computer == "rock") 
+    ){
+            tempPlayerScore++;
+            return `You win! ${player.toUpperCase()} beats ${computer.toUpperCase()}.`
         }
-        else if (computerSelection === "rock") {
-            result = "You win! Paper beats Rock";
-        }
-        else {
-            result = "It's a tie...";
-        }
+    else {
+        tempComputerScore++;
+        return `You lose! ${computer.toUpperCase()} beats ${player.toUpperCase()}.`
     }
-    if (playerSelection === "scissors") {
-        if (computerSelection === "rock") {
-            result = "You lose! Rock beats Scissors"
-        }
-        else if (computerSelection === "paper") {
-            result = "You win! Scissors beat paper";
-        }
-        else (computerSelection === "scissors")
-            result = "It's a tie..."
-        }
-        return console.log(result);
-    }
-    
-
-
-console.log(playerSelection);
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+}
