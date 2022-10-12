@@ -7,7 +7,7 @@
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet"
-  href="https://fonts.googleapis.com/css?family=Permanent+Marker">
+  href="https://fonts.googleapis.com/css?family=Silkscreen">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
@@ -19,11 +19,11 @@
         <input type="image" src="images/paper-icon.png" alt="Paper" class="ctrl" data-selection="paper"/>
         <input type="image" src="images/scissors-icon.png" alt="Scissors" class="ctrl" data-selection="scissors"/>
     </div>
-    <div class="choices-msg"></div>
-    <div class="message">Welcome, you silly human. Are you ready? Choose your destiny...</div>
+    <div class="choices-msg" id="refresh"></div>
+    <div class="message">Choose your destiny...</div>
     <div class="result-container">
         <div>YOU:
-            <span class="player-score"></span>
+            <span class="player-score">0</span>
         </div>
         <div>ME:
             <span class="computer-score">0</span>

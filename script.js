@@ -22,13 +22,14 @@ choiceBtns.forEach(input => input.addEventListener("click", (e) => {
         message.setAttribute("style", "color: green; font-size: 48px");
         choiceMessage.textContent = " ";
         disableButtons();
+        restartGame();
     }
     if (tempComputerScore == 5) {
         message.textContent = "You lose the game!";
         message.setAttribute("style", "color: red; font-size: 48px");
         choiceMessage.textContent = " ";
         disableButtons();
-        
+        restartGame();
     }
 }));
 
@@ -36,6 +37,7 @@ choiceBtns.forEach(input => input.addEventListener("click", (e) => {
 function disableButtons() {
     choiceBtns.forEach(input => {
         input.disabled = true;
+        input.classList.add('noHover');
         })
 }
 
@@ -43,6 +45,23 @@ function disableButtons() {
 function computerChoice() {
     let choices = ["Rock", "Paper", "Scissors"]
     return computer = choices[Math.floor(Math.random() * choices.length)]
+}
+
+// Create button
+function restartGame() {
+    let btn = document.createElement('input');
+    btn.setAttribute('type', 'button');
+    btn.setAttribute('value', 'PLAY AGAIN?');
+    btn.setAttribute('class', 'button-class')
+    btn.addEventListener('click', refreshPage) 
+    let location = document.getElementById('refresh');
+    location.appendChild(btn);
+    
+};
+
+// Refresh page function
+const refreshPage = () => {
+    location.reload();
 }
 
 // Game functionality
